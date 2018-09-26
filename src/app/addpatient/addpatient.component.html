@@ -1,0 +1,52 @@
+ <div class="container">
+ <form #patientform="ngForm" (ngSubmit)="savepat()">
+  <div class="panel panel-primary">
+    <div class="panel-heading">
+      <h3 class="panel-title">Add Patient</h3>
+    </div>
+    <div class="panel-body">
+
+      <div class="form-group" [class.has-error]="id.invalid && id.touched">
+        <label for="id" class="control-label">Patient Id</label>
+        <input id="id" type="text" class="form-control" required
+               name="id" [(ngModel)]="patient.PatientId" #id="ngModel">
+      </div>
+      <span class="help-block" *ngIf="id.invalid && id.touched">
+        Id is required
+      </span>
+
+
+      <div class="form-group" [class.has-error]="fullName.invalid && fullName.touched">
+        <label for="fullName" class="control-label">Full Name</label>
+        <input id="fullName" type="text" class="form-control" required
+               name="fullName" [(ngModel)]="patient.PatientName" #fullName="ngModel">
+      </div>
+      <span class="help-block" *ngIf="fullName.invalid && fullName.touched">
+        Name is required
+      </span>
+      
+      <div class="form-group" [class.has-error]="dob.invalid && dob.touched">
+        <label for="dob" class="control-label">DOB</label>
+        <input id="dob" type="date" class="form-control" required [max]="maxdate"
+               name="dob" [(ngModel)]="patient.DateOfBirth" (change)="cal(patientform)" #dob="ngModel"> 
+      </div>
+      <span class="help-block" *ngIf="dob.invalid && dob.touched">
+        DateOfBirth is required
+      </span>
+      
+
+
+      <div class="form-group">
+        <label for="age">Age</label>
+        <input id="age" type="text" class="form-control"
+               name="age" [(ngModel)]="patient.Age" disabled >
+      </div>
+
+
+    </div>
+    <div class="panel-footer">
+      <button (click)="savepat()" class="btn btn-primary" type="submit" [disabled]="patientform.invalid">Save</button>
+    </div>
+  </div>
+</form>
+ </div>

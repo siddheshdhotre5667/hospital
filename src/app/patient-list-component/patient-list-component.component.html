@@ -1,0 +1,112 @@
+
+
+<div class="container ">
+     
+<div class="row" >
+    <div class="col-xs-11" style=" position: fixed">
+    <button style="float: right;" type="button" class="btn btn-success "
+      (click)="sortasc($event)" >Age in ASC</button>
+     
+      <div class="col-xs-10">
+      <button style="float: right;" type="button" class="btn btn-success"
+        (click)="sortdsc($event)" >Age in DSC</button>
+    </div>  
+
+    <div class="col-xs-10">
+    <button type="button"  class=" floater btn btn-danger" [class.style1]="hidden1" (click)="undo()">Undo</button>
+    </div> 
+    </div>
+
+  </div> 
+
+ 
+<br/>
+<br/>
+<div class="panel panel-primary"  *ngFor="let pat of patarr | desc">
+  
+ 
+
+  
+  <div class="panel-heading" >
+    <h3 class="panel-title"> {{pat.PatientName}}</h3>
+  </div>
+ 
+
+  <div class="panel-body">
+    <div class="col-xs-10">
+      <div class="row vertical-align">
+        
+        <div class="col-xs-4">
+          <img [src]="pat.photopath" height="200" width="200"/>
+        </div>
+
+        <div class="col-xs-8">
+          <div class="row"> 
+            <div class="col-xs-6">
+              ID
+            </div>
+            <div class="col-xs-6">
+            {{pat.PatientId}}
+            </div>
+          </div>
+
+          <div class="row"> 
+            <div class="col-xs-6">
+              NAME
+            </div>
+            <div class="col-xs-6">
+            {{pat.PatientName}}
+            </div>
+          </div>
+
+          <div class="row"> 
+            <div class="col-xs-6">
+              Date Of Birth
+            </div>
+            <div class="col-xs-6">
+            {{pat.DateOfBirth | date: 'dd/MM/yyyy'}}
+            </div>
+          </div>
+
+          <div class="row"> 
+            <div class="col-xs-6">
+              AGE
+            </div>
+            <div class="col-xs-6">
+            {{pat.Age}}
+            </div>
+
+            <div class="row"> 
+            <div class="col-xs-6">
+              <br/>
+              <button type="button" class="btn btn-danger"  (click)="reveal(pat.PatientId)">Delete</button>
+            </div>
+              
+             
+
+
+
+          </div>
+
+
+
+
+
+
+        </div> 
+
+      </div>   
+    </div>     
+</div>
+</div>
+</div>
+</div>
+ 
+
+
+
+
+
+
+
+ 
